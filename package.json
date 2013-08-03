@@ -10,5 +10,6 @@
     "ejs": "*",
     "mongodb": "*",
     "connect-mongo": "*"
+    , "connect-flash": "*"
   }
 }

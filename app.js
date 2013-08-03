@@ -12,7 +12,9 @@ var express = require('express')
   // 加入数据库
   , MongoStore = require('connect-mongo')(express)
   // 数据位置和名字的设置
-  , settings = require('./settings');
+  , settings = require('./settings')
+  , flash = require('connect-flash');
+
 
 var app = express();
 
@@ -25,6 +27,10 @@ app.configure(function(){
 
   // 设置视图模版引擎为 ejs
   app.set('view engine', 'ejs');
+
+  // 引入 flash 模块
+  // 通过它保存的变量只会在用户当前和下一次的请求中被访问( req.flash 是存放在session里的)，之后会被清除，通过它我们可以很方便地实现页面的通知和错误信息显示功能。
+  app.use(flash());
 
   // connect 内建的中间件，使用默认的 favicon 图标
   app.use(express.favicon());
